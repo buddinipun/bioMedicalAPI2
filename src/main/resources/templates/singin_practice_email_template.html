@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Access Practice</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+<table style="Margin:0;background:#eeebea;border-collapse:collapse;border-spacing:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;height:100%;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;width:100%">
+   <tbody>
+      <tr style="padding:0;text-align:left;vertical-align:top">
+         <td align="center" valign="top" style="Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+            <center style="min-width:768px;width:100%">
+			   <div style="height:30px;">&nbsp;</div>
+               <table align="center" style="Margin:0 auto;background:#fefefe;border-collapse:collapse;border-spacing:0;float:none;margin:0 auto;margin-bottom:10px!important;padding:0;text-align:center;vertical-align:top;width:768px">
+                  <tbody>
+                     <tr style="padding:0;text-align:left;vertical-align:top">
+                        <td style="Margin:0;border-collapse:collapse!important;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
+                           <table style="border-collapse:collapse;border-spacing:0;display:table;padding:0;text-align:left;vertical-align:top;width:100%">
+                              <tbody>
+                                 <tr style="padding:0;text-align:left;vertical-align:top">
+                                    <th style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0 auto;padding:16px;text-align:left;width:752px">
+                                       <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
+                                          <tbody>
+                                             <tr style="padding:0;text-align:left;vertical-align:top">
+                                                <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
+                                                   <p th:text="${'Dear ' + name + ','}"></p>
+                                                   <a th:href="@{${verifyURL}}" target="_blank"><span th:text="Click"></span></a>
+                                                   <b>Here to checkout your created practice. If you did NOT get access to practice please contact the administrator at support@conscisys.com. If you requested the change do not respond to this mail.</b>
+                                                   <br/>
+												   <p>
+												      Thank you.
+													  <br/>
+												      <em>DPL holdings Team.</em>
+												    </p>
+												    <br/>
+												    
+                                                </th>
+                                                <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:14px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;width:0"></th>
+                                             </tr>
+                                          </tbody>
+                                       </table>
+                                    </th>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               <div style="height:30px;">&nbsp;</div>
+            </center>
+         </td>
+      </tr>
+   </tbody>
+</table>
+</body>
+</html>

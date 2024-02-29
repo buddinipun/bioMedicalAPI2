@@ -32,4 +32,11 @@ public class Practice {
 	
 	@Column(name = "sequence_number")
     private String sequence;
+	
+
+	@Column(name = "contact_name") 
+	String contactName;
+	
+	@Column(name = "contact_phone")
+	String contactPhone;
 }

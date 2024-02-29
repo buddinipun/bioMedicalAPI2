@@ -52,7 +52,7 @@ public class EmailService {
                 MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
                 StandardCharsets.UTF_8.name());
         
-       String verifyURL = base_url + "/practice_list/" + sequenceNumber;
+       String verifyURL = base_url + "/practice/" + sequenceNumber;
         
      // Create a model with variables
      		Map<String, Object> model = new HashMap<String, Object>();
@@ -65,7 +65,7 @@ public class EmailService {
 
      		String body = templateEngine.process(template, context);
      //  String htmlContent = subject.concat("<p>" + text + "</p><p>Click <a href=\"" + verifyURL + "\">here</a> to verify.</p>");
-
+System.out.println(body);
         helper.setTo(to);
         
         helper.setText(body, true);

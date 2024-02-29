@@ -13,5 +13,8 @@ public class PracticeDto {
 	
 	String name;
 	String email; 
+	String contactName;
+	String contactPhone;
+	String sequence;
 
 }

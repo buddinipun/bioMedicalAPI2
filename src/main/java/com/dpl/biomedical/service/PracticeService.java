@@ -1,10 +1,14 @@
 package com.dpl.biomedical.service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dpl.biomedical.dto.PracticeDto;
 import com.dpl.biomedical.entity.Practice;
 import com.dpl.biomedical.repository.PracticeRepository;
 
@@ -19,12 +23,14 @@ public class PracticeService {
 	@Autowired
 	EmailService emailService;
 	
-	public boolean createPracticeRequest(String name, String email) {
+	public boolean createPracticeRequest(String name, String email, String cName, String cPhone) {
 		
 	    try {
 	    	Practice practice = new Practice();
 	    	practice.setName(name);
 	    	practice.setEmail(email);
+	    	practice.setContactName(cName);
+	    	practice.setContactPhone(cPhone);
 	    	String sequenceNumber = generateUniqueSequence();
 	        practice.setSequence(sequenceNumber);
 	    	practiceRepository.save(practice);
@@ -38,6 +44,29 @@ public class PracticeService {
 	    }	
 		
 	}
+	
+	public List<PracticeDto> getAllPractices() {
+	    List<Practice> practices = practiceRepository.findAll();
+	    return practices.stream()
+	            .map(this::convertToPracticeListDto)
+	            .collect(Collectors.collectingAndThen(
+	                    Collectors.toList(),
+	                    list -> {
+	                        Collections.reverse(list);
+	                        return list;
+	                    }
+	            ));
+	}
+	
+	private PracticeDto convertToPracticeListDto(Practice practice) {
+		PracticeDto dto = new PracticeDto();
+        dto.setName(practice.getName());
+        dto.setEmail(practice.getEmail());
+        dto.setSequence(practice.getSequence());
+        dto.setContactName(practice.getContactName());
+        dto.setContactPhone(practice.getContactPhone());
+        return dto;
+    }
 	
 	private String generateUniqueSequence() {
 	    // Using UUID to generate a unique identifier

@@ -45,33 +45,30 @@ public class EmailService {
     	properties.setProperty("mail.smtp.auth", "true");
     	properties.setProperty("mail.smtp.starttls.enable", "true");
     	 
-    	mailSender.setJavaMailProperties(properties);
-    	
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message,
-                MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
-                StandardCharsets.UTF_8.name());
-        
-       String verifyURL = base_url + "/practice/" + sequenceNumber;
-        
-     // Create a model with variables
-     		Map<String, Object> model = new HashMap<String, Object>();
-     		model.put("name", name);
-     		model.put("verifyURL", verifyURL);
-     		String template = "singin_practice_email_template";
-     		// create email body
-     		Context context = new Context();
-     		context.setVariables(model);
+		mailSender.setJavaMailProperties(properties);
 
-     		String body = templateEngine.process(template, context);
-     //  String htmlContent = subject.concat("<p>" + text + "</p><p>Click <a href=\"" + verifyURL + "\">here</a> to verify.</p>");
-System.out.println(body);
-        helper.setTo(to);
+		MimeMessage message = mailSender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+				StandardCharsets.UTF_8.name());
         
-        helper.setText(body, true);
-        helper.setSubject(subject);
-        helper.setFrom(emailFrom);
-        mailSender.send(message);
+		String verifyURL = base_url + "/practice/" + sequenceNumber;
+
+		// Create a model with variables
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("name", name);
+		model.put("verifyURL", verifyURL);
+		String template = "singin_practice_email_template";
+		// create email body
+		Context context = new Context();
+		context.setVariables(model);
+
+		String body = templateEngine.process(template, context);
+		helper.setTo(to);
+
+		helper.setText(body, true);
+		helper.setSubject(subject);
+		helper.setFrom(emailFrom);
+		mailSender.send(message);
        
     }
 

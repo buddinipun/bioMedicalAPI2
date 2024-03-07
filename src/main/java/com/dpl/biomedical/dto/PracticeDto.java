@@ -17,30 +17,9 @@ public class PracticeDto {
 	String name;
 	String email;
 	String sequence;
-
-	String facilityName;
-	String facilityTaxId;
-	String facilityNPI;
-	String facilityPTAN;
-	String contactName;
-	String contactPhone;
-	String contactEmail;
-	String contactFax;
-	String noOfFacilities;
-	String noOfProviders;
-	String apContact;
-	String apCotactPhone;
-	String apCotactEmail;
-	String billerContact;
-	String billerContactPhone;
-	String billerContactEmail;
-	String billerAddress;
-	String woundCareFocus;
-	String AvgWoundsTreatedPerMO;
-	List<String> placesOfServices;
-	List<String> productOfInterest;
-	String firstInsurancePayer;
-	String secondInsurancePayer;
-	String thirdInsurancePayer;
-
+	PracticeInformationDto practiceInformationData;
+	AccountPayableDto accountPayableData;
+	BillerInformationDto billerInformationData;
+	WoundCareInformationDto woundCareInformationData;
+	InsurancePayerMixDto insurancePayerMixData;
 }

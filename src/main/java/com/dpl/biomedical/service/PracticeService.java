@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dpl.biomedical.dto.PracticeDto;
+import com.dpl.biomedical.dto.PracticeInformationDto;
 import com.dpl.biomedical.entity.Practice;
 import com.dpl.biomedical.repository.PracticeRepository;
 
@@ -24,14 +25,14 @@ public class PracticeService {
 	@Autowired
 	EmailService emailService;
 	
-	public boolean createPracticeRequest(String name, String email, String cName, String cPhone) {
+	public boolean createPracticeRequest(String name, String email) {
 		
 	    try {
 	    	Practice practice = new Practice();
 	    	practice.setName(name);
 	    	practice.setContactEmail(email);
-	    	practice.setContactName(cName);
-	    	practice.setContactPhone(cPhone);
+//	    	practice.setContactName(cName);
+//	    	practice.setContactPhone(cPhone);
 	    	String sequenceNumber = generateUniqueSequence();
 	        practice.setSequence(sequenceNumber);
 	    	practiceRepository.save(practice);
@@ -83,12 +84,16 @@ public class PracticeService {
 	
 	private PracticeDto convertToPracticeListDto(Practice practice) {
 		PracticeDto dto = new PracticeDto();
+		PracticeInformationDto piDto = new PracticeInformationDto();
+		
+		piDto.setContactPhone(practice.getContactName());
+		piDto.setContactPhone(practice.getContactPhone());
+		
 		dto.setId(practice.getId());
         dto.setName(practice.getName());
         dto.setEmail(practice.getContactEmail());
         dto.setSequence(practice.getSequence());
-        dto.setContactName(practice.getContactName());
-        dto.setContactPhone(practice.getContactPhone());
+        dto.setPracticeInformationData(piDto);
         return dto;
     }
 	
